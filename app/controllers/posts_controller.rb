@@ -4,6 +4,7 @@ class PostsController < ApplicationController
 
   def index
     @posts = user_signed_in? ? Post.sorted : Post.published.sorted
+    @pagy, @posts = pagy(@posts)
   end
 
   def show
